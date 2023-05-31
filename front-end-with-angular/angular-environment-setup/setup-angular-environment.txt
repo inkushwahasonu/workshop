@@ -1,0 +1,111 @@
+Proccess to setup environment of ‘ANGULAR’
+
+Step 1:  Download and install => node, vs-code editor and git (github)
+
+Step 2: check version of node with command =>
+   	 node -v
+
+Step 3: Install npm (Node Package Manager) with command =>
+        	npm install -g npm
+
+Step 4: Check version of npm with command =>
+   	 npm -v
+
+Step 5: Install Angular  with command =>
+        	npm install -g @angular/cli
+
+Step 6: Check version of angular with command =>
+    	ng -v          (or => ng - -version )
+
+Step 7: install yarn with command =>
+   	 npm install - -global yarn 
+
+Step 8: Create a folder in any drive
+    ex: Internship
+
+Step 9: Open your folder (Internship) in vs-code editor
+
+Step 10: To create First Angular App 
+    Open Your vs-code terminal (git bash) and type command =>
+    	  ng new my-app
+
+Step 11: Delete node-modules and package-lock.json files from my-app project
+
+Step 12: install yarn in your project with command in vs-code terminal (git bash) =>
+    	yarn install
+
+
+Process to setup GITHUB
+
+Step 1: Create Account in github.com
+
+Step 2: Create a repository in github
+    • select public option
+    • Add readme file
+    • select node for gitignore
+    • select MIT License for license
+Step 3: login in vs-code with github  
+Step 4: initialize github in your local system with commands
+	git config --global user.name "Your Name Here"
+	git config --global user.email "your@email.example"
+
+Step 5:  Clone  your repository in your local folder  with command
+    	git clone ‘https path of yous repository’
+    
+    ex:   git clone https://github.com/userName/project.git
+
+Step 6: Cut  all folders of  my-app and paste in your repository (which is cloned from github )
+
+Step 7: Open your repository in vs code 
+
+Step 8: Serve your project with command =>
+    	ng serve
+
+Step 9: Push your project in github with command =>
+    	git add .
+    	git commit -m “code setup done”      (note: “ ” is your instruction box)
+   	 git push origin main         (note: main is your branch)
+
+
+Process to create component
+
+Step 1: Create two folfer components/common and pages in app folder
+
+Step 2: type command in terminal (git bash) 
+    ng generate component path/component-name
+
+    ex:    ng generate component pages/home
+
+
+
+Process to install Bootstrap
+
+Step 1: install bootstrap with command =>
+    yarn add bootstrap bootstrap-icons
+
+Step 2:  
+
+After install, we will configure the bootstrap and bootstrap-icons libraries    Change the angular.json file and add the bootstrap.scss, bootstrap-icons.css and bootstrap.bundle.min.js files as below:
+    
+"styles": [
+  "node_modules/bootstrap/scss/bootstrap.scss",
+  "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+  "src/styles.scss"
+],
+"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+
+
+
+
+
+Refrence URLs
+1.  Angular =>
+  https://angular.io/
+
+2. GITHUB =>
+   https://docs.github.com/en/get-started/quickstart/set-up-git
+
+3. Bootstrap =>
+https://www.freecodecamp.org/news/how-to-add-bootstrap-css-framework-to-an-angular-application/
