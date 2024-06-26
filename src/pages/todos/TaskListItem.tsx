@@ -85,6 +85,7 @@ const TaskListItem: React.FC = () => {
             <input
               title="input"
               type="text"
+              placeholder="Add new task"
               value={inputField.value}
               onChange={(event) => handleChange(index, event)}
             />

@@ -88,6 +88,7 @@ const CompletedListItem: React.FC = () => {
             <input
               title="input"
               type="text"
+              placeholder="Add task"
               value={inputField.value}
               onChange={(event) => handleChange(index, event)}
             />
