@@ -67,13 +67,14 @@ const TaskListItem: React.FC = () => {
   };
   return (
     <>
-      <div>
+      <div className="task_list_section">
         {inputFields.map((inputField, index) => (
-          <div key={index}>
+          <div key={index} className="task_list_item">
             {inputField.value ? (
               <input
                 title="checkbox"
                 type="checkbox"
+                className="checkbox"
                 onChange={(event) =>
                   handleComplete(index, event.target.checked)
                 }
@@ -83,6 +84,7 @@ const TaskListItem: React.FC = () => {
             )}
 
             <input
+              className="task_input"
               title="input"
               type="text"
               placeholder="Add new task"
@@ -91,7 +93,12 @@ const TaskListItem: React.FC = () => {
             />
             {inputField.value && (
               <>
-                <button onClick={() => handleRemoveField(index)}>Remove</button>
+                <button
+                  className="remove_button"
+                  onClick={() => handleRemoveField(index)}
+                >
+                  Remove
+                </button>
               </>
             )}
           </div>

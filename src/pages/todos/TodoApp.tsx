@@ -12,15 +12,15 @@ const TodoApp: React.FC = () => {
     <>
       <div className="todo_app_section">
         <div className="todo_app_container">
-          <div className="completed_task_list">
-            <h2>Task List</h2>
+          <div className="new_task_list task_list">
+            <h4>Task List</h4>
             <div>
               <TaskListItem />
             </div>
           </div>
 
           <div className="completed_task_list">
-            <h2>Completed Task</h2>
+            <h4>Completed Task</h4>
             <div>
               <CompletedListItem />
             </div>

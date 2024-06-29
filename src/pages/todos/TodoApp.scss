@@ -1,18 +1,30 @@
 .todo_app_section {
   width: 100%;
   height: 100vh;
-  background-color: #f4f6f8;
+  background-color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
 
   & .todo_app_container {
     width: 500px;
-    height: auto;
-    min-height: 200px;
+    height: 400px;
     background-color: #fff;
+    padding: 20px;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
       rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+    .new_task_list {
+      width: 100%;
+      height: auto;
+      min-height: 50%;
+      border-bottom: 2px solid #aaaaaa;
+    }
+    .completed_task_list {
+      width: 100%;
+      height: auto;
+      min-height: 50%;
+    }
   }
 }
