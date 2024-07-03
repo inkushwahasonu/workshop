@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TodoApp.scss";
 import TaskList from "./TaskList";
 import CompletedTask from "./CompletedTask";
+import { IInputField } from "../../interface/toList";
 
 const TodoApp: React.FC = () => {
+  const [sharedState, setSharedState] = useState<IInputField[]>([]);
+
   return (
     <>
       <div className="todo_app_section">
@@ -11,14 +14,20 @@ const TodoApp: React.FC = () => {
           <div className="new_task_list task_list">
             <h4>Task List</h4>
             <div>
-              <TaskList />
+              <TaskList
+                sharedState={sharedState}
+                setSharedState={setSharedState}
+              />
             </div>
           </div>
 
           <div className="completed_task_list">
             <h4>Completed Task</h4>
             <div>
-              <CompletedTask />
+              <CompletedTask
+                sharedState={sharedState}
+                setSharedState={setSharedState}
+              />
             </div>
           </div>
         </div>

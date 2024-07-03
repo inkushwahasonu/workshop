@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { InputField } from "../../interface/toList";
+import { IChildProps, IInputField } from "../../interface/toList";
 import "./CompletedTask.scss";
 
-const CompletedTask: React.FC = () => {
-  const [inputFields, setInputFields] = useState<InputField[]>([]);
+const CompletedTask: React.FC<IChildProps> = ({
+  sharedState,
+  setSharedState,
+}) => {
+  const [inputFields, setInputFields] = useState<IInputField[]>([]);
 
   useEffect(() => {
     const storedCompletedTask = JSON.parse(
@@ -12,7 +15,7 @@ const CompletedTask: React.FC = () => {
     if (storedCompletedTask) {
       setInputFields(storedCompletedTask);
     }
-  }, []);
+  }, [sharedState]);
 
   const handleChange = (
     index: number,
@@ -56,6 +59,7 @@ const CompletedTask: React.FC = () => {
       values.splice(index, 1);
       setInputFields(values);
       localStorage.setItem("completedTask", JSON.stringify(values));
+      setSharedState(values);
     }
   };
   return (

@@ -16,16 +16,16 @@
       rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     overflow: auto;
 
-    .new_task_list {
+    .task_list {
       width: 100%;
       height: auto;
       min-height: 50%;
+      padding: 20px 0px;
+    }
+    .new_task_list {
       border-bottom: 2px solid #aaaaaa;
     }
     .completed_task_list {
-      width: 100%;
-      height: auto;
-      min-height: 50%;
     }
   }
 }

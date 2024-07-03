@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { InputField } from "../../interface/toList";
+import { IChildProps, IInputField } from "../../interface/toList";
 import "./TaskList.scss";
 
-const TaskList: React.FC = () => {
-  const [inputFields, setInputFields] = useState<InputField[]>([]);
+const TaskList: React.FC<IChildProps> = ({ sharedState, setSharedState }) => {
+  const [inputFields, setInputFields] = useState<IInputField[]>([]);
 
   useEffect(() => {
     const storedTaskList = JSON.parse(
@@ -14,7 +14,7 @@ const TaskList: React.FC = () => {
     } else {
       setInputFields([{ value: "" }]);
     }
-  }, []);
+  }, [sharedState]);
 
   const handleAddField = () => {
     if (inputFields[inputFields.length - 1].value.trim() !== "") {
@@ -62,6 +62,7 @@ const TaskList: React.FC = () => {
       values.splice(index, 1);
       setInputFields(values);
       localStorage.setItem("taskList", JSON.stringify(values));
+      setSharedState(values);
     }
   };
   return (
@@ -74,6 +75,7 @@ const TaskList: React.FC = () => {
                 title="checkbox"
                 type="checkbox"
                 className="checkbox"
+                checked={false}
                 onChange={(event) =>
                   handleCompleteTask(index, event.target.checked)
                 }
