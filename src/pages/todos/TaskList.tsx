@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { InputField } from "../../interface/toList";
+import "./TaskList.scss";
 
-import "./TaskListItem.scss";
-
-const TaskListItem: React.FC = () => {
+const TaskList: React.FC = () => {
   const [inputFields, setInputFields] = useState<InputField[]>([]);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const TaskListItem: React.FC = () => {
     handleAddField();
   };
 
-  const handleRemoveField = (index: number) => {
+  const handleRemoveTask = (index: number) => {
     const values = [...inputFields];
     values.splice(index, 1);
     setInputFields(values);
@@ -42,24 +41,24 @@ const TaskListItem: React.FC = () => {
     localStorage.setItem("taskList", JSON.stringify(values));
   };
 
-  const handleComplete = (index: number, isChecked: boolean) => {
+  const handleCompleteTask = (index: number, isChecked: boolean) => {
     const values = [...inputFields];
 
     if (isChecked) {
       console.log(values[index]);
 
-      let completedList = [];
+      let completedTask = [];
 
-      const newCompletedList = JSON.parse(
+      const newCompletedTask = JSON.parse(
         localStorage.getItem("completedTask") as string
       );
 
-      if (newCompletedList) {
-        completedList = newCompletedList;
+      if (newCompletedTask) {
+        completedTask = newCompletedTask;
       }
 
-      completedList.push(values[index]);
-      localStorage.setItem("completedTask", JSON.stringify(completedList));
+      completedTask.push(values[index]);
+      localStorage.setItem("completedTask", JSON.stringify(completedTask));
       values.splice(index, 1);
       setInputFields(values);
       localStorage.setItem("taskList", JSON.stringify(values));
@@ -68,15 +67,15 @@ const TaskListItem: React.FC = () => {
   return (
     <>
       <div className="task_list_section">
-        {inputFields.map((inputField, index) => (
+        {inputFields.map((item, index) => (
           <div key={index} className="task_list_item">
-            {inputField.value ? (
+            {item.value ? (
               <input
                 title="checkbox"
                 type="checkbox"
                 className="checkbox"
                 onChange={(event) =>
-                  handleComplete(index, event.target.checked)
+                  handleCompleteTask(index, event.target.checked)
                 }
               />
             ) : (
@@ -88,14 +87,14 @@ const TaskListItem: React.FC = () => {
               title="input"
               type="text"
               placeholder="Add new task"
-              value={inputField.value}
+              value={item.value}
               onChange={(event) => handleChange(index, event)}
             />
-            {inputField.value && (
+            {item.value && (
               <>
                 <button
                   className="remove_button"
-                  onClick={() => handleRemoveField(index)}
+                  onClick={() => handleRemoveTask(index)}
                 >
                   Remove
                 </button>
@@ -108,4 +107,4 @@ const TaskListItem: React.FC = () => {
   );
 };
 
-export default TaskListItem;
+export default TaskList;

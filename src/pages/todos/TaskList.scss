@@ -1,0 +1,12 @@
+.task_list_section {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  & .task_list_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}

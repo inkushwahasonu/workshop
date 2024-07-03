@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { InputField } from "../../interface/toList";
+import "./CompletedTask.scss";
 
-const CompletedListItem: React.FC = () => {
+const CompletedTask: React.FC = () => {
   const [inputFields, setInputFields] = useState<InputField[]>([]);
 
   useEffect(() => {
@@ -11,16 +12,7 @@ const CompletedListItem: React.FC = () => {
     if (storedCompletedTask) {
       setInputFields(storedCompletedTask);
     }
-    // else {
-    //   setInputFields([{ value: "" }]);
-    // }
   }, []);
-
-  const handleAddField = () => {
-    if (inputFields[inputFields.length - 1].value.trim() !== "") {
-      setInputFields([...inputFields, { value: "" }]);
-    }
-  };
 
   const handleChange = (
     index: number,
@@ -31,10 +23,9 @@ const CompletedListItem: React.FC = () => {
 
     localStorage.setItem("completedTask", JSON.stringify(values));
     setInputFields(values);
-    handleAddField();
   };
 
-  const handleRemoveField = (index: number) => {
+  const handleRemoveTask = (index: number) => {
     const values = [...inputFields];
     values.splice(index, 1);
     setInputFields(values);
@@ -42,7 +33,7 @@ const CompletedListItem: React.FC = () => {
     localStorage.setItem("completedTask", JSON.stringify(values));
   };
 
-  const handleComplete = (index: number, isChecked: boolean) => {
+  const handleCompleteTask = (index: number, isChecked: boolean) => {
     const values = [...inputFields];
 
     if (!isChecked) {
@@ -69,16 +60,16 @@ const CompletedListItem: React.FC = () => {
   };
   return (
     <>
-      <div>
-        {inputFields.map((inputField, index) => (
-          <div key={index}>
-            {inputField.value ? (
+      <div className="completed_task_section">
+        {inputFields.map((item, index) => (
+          <div key={index} className="completed_task_item">
+            {item.value ? (
               <input
                 title="checkbox"
                 type="checkbox"
                 checked
                 onChange={(event) =>
-                  handleComplete(index, event.target.checked)
+                  handleCompleteTask(index, event.target.checked)
                 }
               />
             ) : (
@@ -89,12 +80,12 @@ const CompletedListItem: React.FC = () => {
               title="input"
               type="text"
               placeholder="Add task"
-              value={inputField.value}
+              value={item.value}
               onChange={(event) => handleChange(index, event)}
             />
-            {inputField.value && (
+            {item.value && (
               <>
-                <button onClick={() => handleRemoveField(index)}>Remove</button>
+                <button onClick={() => handleRemoveTask(index)}>Remove</button>
               </>
             )}
           </div>
@@ -104,4 +95,4 @@ const CompletedListItem: React.FC = () => {
   );
 };
 
-export default CompletedListItem;
+export default CompletedTask;

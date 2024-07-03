@@ -1,11 +1,7 @@
 import React from "react";
-
-/** components */
-
-/** style */
 import "./TodoApp.scss";
-import TaskListItem from "./TaskListItem";
-import CompletedListItem from "./CompletedListItem";
+import TaskList from "./TaskList";
+import CompletedTask from "./CompletedTask";
 
 const TodoApp: React.FC = () => {
   return (
@@ -15,14 +11,14 @@ const TodoApp: React.FC = () => {
           <div className="new_task_list task_list">
             <h4>Task List</h4>
             <div>
-              <TaskListItem />
+              <TaskList />
             </div>
           </div>
 
           <div className="completed_task_list">
             <h4>Completed Task</h4>
             <div>
-              <CompletedListItem />
+              <CompletedTask />
             </div>
           </div>
         </div>

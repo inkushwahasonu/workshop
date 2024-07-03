@@ -1,0 +1,12 @@
+.completed_task_section {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  & .completed_task_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
